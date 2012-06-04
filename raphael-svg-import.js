@@ -103,7 +103,11 @@ Raphael.fn.importSVG = function (svgXML) {
       return shape;
     };
 
-    var elSVG = svgXML.getElementsByTagName("svg")[0];
+    var elSVG = svgXML.getElementsByTagName("svg")[0];    
+    if (typeof elSVG==='undefined'){
+      // element could be the svg itself
+      elSVG=svgXML;
+    }    
     elSVG.normalize();
     this.parseElement(elSVG);
   } catch (error) {
